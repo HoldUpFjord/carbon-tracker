@@ -7,7 +7,7 @@ const app = express();
 const port = 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const staticPath = path.resolve(__dirname, 'dist', 'tmp');
+const staticPath = path.resolve(__dirname, 'dist');
 
 app.use(express.static(staticPath));
 
