@@ -24,6 +24,8 @@ function App() {
  useEffect(() => {
   fetch('https://climate-change-live402.p.rapidapi.com/news', options)
   .then(response => response.json())
+  .then(response => console.log(response.json))
+  
   .then(data => setData(data))
   .catch(err => console.error(err));
   }, []);
