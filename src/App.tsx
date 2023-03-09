@@ -26,7 +26,6 @@ function App() {
   .then(response => response.json())
   .then(response => console.log(response.json))
   
-  .then(data => setData(data))
   .catch(err => console.error(err));
   }, []);
    
