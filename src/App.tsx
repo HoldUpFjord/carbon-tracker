@@ -42,11 +42,14 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-     <ul>
+     
       {data.map( item => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-     </ul>
+       <div key={item.id}>
+        <h2>{item.title}</h2>
+        <p>{item.source}</p>
+       </div>
+       ))}
+     
       <button></button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
