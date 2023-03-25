@@ -1,11 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
 
 
+import { useState, useEffect } from 'react';
+import reactLogo from './assets/react.svg';
+import './App.css';
+ 
+interface Object {
+  title: string;
+  url: string;
+}
+
+  
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [data, setData] = useState<Object[]>([]);
+  
   const options = {
     method: 'GET',
     headers: {
@@ -13,58 +20,35 @@ function App() {
       'X-RapidAPI-Host': 'climate-change-live402.p.rapidapi.com'
     }
   };
- function GetNews() { 
-  fetch('https://climate-change-live402.p.rapidapi.com/news', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
- }
+ useEffect(() => {
+  fetch('https://climate-change-live402.p.rapidapi.com/news/latimes', options)
+  .then(response => response.json())
+  .then(data => setData(data))
+  .catch(err => console.error(err));
+  }, []);
+   
+  
+ 
+  if (!data) {
+    return <p>Loading...</p>
+  }
+ 
+ 
   return (
     <div className="App">
+      
+     
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-<<<<<<< HEAD
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => GetNews()}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <div className="news">
-        <button onClick={() => setCount((count) => count + 1)}>
-          
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-=======
-     
       {data.map( item => (
-       <div key={item.id}>
-        <h2>{item.title}</h2>
-        <p>{item.source}</p>
-       </div>
-       ))}
-     
->>>>>>> 1044f8311ee41b57b258654f6345f3cd2b2b21bc
-      <button></button>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <div key={item.title}>
+          <p>{item.title}</p>
+          <p>{item.url}</p>
+          </div>
+      ))}
+     </div>
+    
+      
     </div>
   )
 }
-
-
-
 export default App
