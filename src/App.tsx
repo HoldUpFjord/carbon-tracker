@@ -29,6 +29,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+<<<<<<< HEAD
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => GetNews()}>
@@ -46,6 +47,16 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+=======
+     
+      {data.map( item => (
+       <div key={item.id}>
+        <h2>{item.title}</h2>
+        <p>{item.source}</p>
+       </div>
+       ))}
+     
+>>>>>>> 1044f8311ee41b57b258654f6345f3cd2b2b21bc
       <button></button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
