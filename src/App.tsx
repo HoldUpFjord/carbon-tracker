@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
 
- 
-
-  
 function App() {
-  const [data, setData] = useState(null);
+  const [count, setCount] = useState(0)
+
   const options = {
     method: 'GET',
     headers: {
@@ -15,23 +13,12 @@ function App() {
       'X-RapidAPI-Host': 'climate-change-live402.p.rapidapi.com'
     }
   };
- useEffect(() => {
-  fetch('https://climate-change-live402.p.rapidapi.com/news/latimes', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .then(json => setData(json))
-  .catch(err => console.error(err));
-  }, []);
-   
-  
-
- 
-  if (!data) {
-    return <p>Loading...</p>
-  }
- 
-
- 
+ function GetNews() { 
+  fetch('https://climate-change-live402.p.rapidapi.com/news', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+ }
   return (
     <div className="App">
       <div>
@@ -42,16 +29,27 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-     <ul>
-      {data.map( item => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-     </ul>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => GetNews()}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <div className="news">
+        <button onClick={() => setCount((count) => count + 1)}>
+          
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
       <button></button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      
     </div>
   )
 }
