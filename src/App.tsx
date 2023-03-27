@@ -7,6 +7,7 @@ import './App.css';
 interface Object {
   title: string;
   url: string;
+  source: string
 }
 
   
@@ -21,7 +22,7 @@ function App() {
     }
   };
  useEffect(() => {
-  fetch('https://climate-change-live402.p.rapidapi.com/news/latimes', options)
+  fetch('https://climate-change-live402.p.rapidapi.com/news', options)
   .then(response => response.json())
   .then(data => setData(data))
   .catch(err => console.error(err));
@@ -38,11 +39,12 @@ function App() {
     <div className="App">
       
      
-      <div>
+      <div className='display:flex flex-flow:column'>
       {data.map( item => (
-        <div key={item.title}>
-          <p>{item.title}</p>
-          <p>{item.url}</p>
+        <div className='border-2 border-white' key={item.title}>
+          <p className='text-3xl font-bold underline'>{item.title}</p>
+          <a href='{item.url}'>{item.url}</a>
+          <p>{item.source}</p>
           </div>
       ))}
      </div>
