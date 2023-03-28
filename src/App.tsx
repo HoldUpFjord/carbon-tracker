@@ -37,13 +37,16 @@ function App() {
  
   return (
     <div className="App">
-      
-     
-      <div className='display:flex flex-flow:column'>
+      <div className='max-w-lg'>
+      <img className = 'max-w-xs 'src="/app.svg"></img>
+      <div className=''>Illustration by <a href="https://icons8.com/illustrations/author/cj62pzCRUq1N">Julia Buzatti</a> from <a href="https://icons8.com/illustrations">Ouch!</a></div>
+      </div>
+
+      <div className='flex flex-col justify-center'>
       {data.map( item => (
-        <div className='border-2 border-white' key={item.title}>
-          <p className='text-3xl font-bold underline'>{item.title}</p>
-          <a href='{item.url}'>{item.url}</a>
+        <div  key={item.title}>
+          <p className='text-3xl font-bold underline w-auto'>{item.title}</p>
+          <a href='{item.url}' target={'_blank'}>{item.url}</a>
           <p>{item.source}</p>
           </div>
       ))}
