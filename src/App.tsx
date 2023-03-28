@@ -46,7 +46,7 @@ function App() {
       {data.map( item => (
         <div  key={item.title}>
           <p className='text-3xl font-bold underline w-auto'>{item.title}</p>
-          <a href='{item.url}' target={'_blank'}>{item.url}</a>
+          <a href={item.url} target={'_blank'}>{item.url}</a>
           <p>{item.source}</p>
           </div>
       ))}

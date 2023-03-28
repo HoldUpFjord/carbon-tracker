@@ -8,4 +8,4 @@ ViteExpress.config({ mode: "production" })
 
 app.get("/message", (_, res) => res.send("Hello from express!"));
 
-ViteExpress.listen(app, 3000, () => console.log("Server is listening..."));
+ViteExpress.listen(app, 3000, () => console.log("Server is listening on 3000..."));
