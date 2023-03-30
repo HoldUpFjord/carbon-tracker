@@ -1,6 +1,6 @@
 import express from "express";
 import ViteExpress from "vite-express";
-const http = require('http')
+import * as http from 'http'; 
 
 const app = express();
 const server = http.createServer(app).listen(3000, () => { 
