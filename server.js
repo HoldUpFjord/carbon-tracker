@@ -12,5 +12,5 @@ const app = express();
 ViteExpress.config({ mode: "production" })
 
 ViteExpress.build();
-app.get("/", (_, res) => res.sendFile(path.join( __dirname ,"public", 'index.html' )));
+app.get("/", (_, res) => res.sendFile(path.join( __dirname , 'index.html' )));
 ViteExpress.listen(app, 3000, () => console.log("Server is listening..."));
