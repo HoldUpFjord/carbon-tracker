@@ -4,7 +4,7 @@ import ViteExpress from "vite-express";
 const app = express();
 
 ViteExpress.config({ mode: "production" })
-app.use(express.static('build', options))
+app.use(express.static('build'))
 
 app.get("/message", (_, res) => res.send("Hello from express!"));
 
