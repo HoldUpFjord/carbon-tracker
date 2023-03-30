@@ -2,6 +2,8 @@ import express from "express";
 import ViteExpress from "vite-express";
 
 
+
+const path = require('path');
 const app = express();
 ViteExpress.config({ mode: "production" })
 
