@@ -1,6 +1,6 @@
 import express from "express";
 import ViteExpress from "vite-express";
-
+import * as path from 'path';
 
 
 const path = require('path');
