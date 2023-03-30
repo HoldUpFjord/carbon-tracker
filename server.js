@@ -1,6 +1,6 @@
 import express from "express";
 import ViteExpress from "vite-express";
-const index = fs.readFile(path.resolve("./public/index.html"))
+
 
 const app = express();
 ViteExpress.config({ mode: "production" })
