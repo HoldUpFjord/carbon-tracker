@@ -1,16 +1,25 @@
-import express from "express";
-import ViteExpress from "vite-express";
-import * as path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import express from 'express';
+import { createServer as createViteServer } from 'vite';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+async function start() {
+  const app = express();
 
+  // Create Vite server in middleware mode
+  const vite = await createViteServer({
+    server: { middlewareMode: true }
+  });
 
+  // Use Vite's middleware
+  app.use(vite.middlewares);
 
-const app = express();
-ViteExpress.config({ mode: "production" })
+  // Serve static assets
+  app.use(express.static('public'));
 
-ViteExpress.build();
-app.get("/", (_, res) => res.sendFile(path.join( __dirname , 'index.html' )));
-ViteExpress.listen(app, 3000, () => console.log("Server is listening..."));
+  // Start the server
+  const port = 3000;
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+start();
