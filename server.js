@@ -11,5 +11,5 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 ViteExpress.config({ mode: "production" })
 console.log(import.meta.url)
-app.get("/", (_, res) => res.sendFile(path.join(__dirname +'index.html' )));
+app.get("/", (_, res) => res.sendFile(path.join(__dirname +"build" + 'index.html' )));
 ViteExpress.listen(app, 3000, () => console.log("Server is listening..."));
