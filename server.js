@@ -5,6 +5,5 @@ const index = fs.readFile(path.resolve("./public/index.html"))
 const app = express();
 ViteExpress.config({ mode: "production" })
 
-app.get("/", (_, res) => res.send( import.meta.url, 'build', index));
-
+app.get("/", (_, res) => res.sendFile(path.join(import.meta.url, 'build', 'index.html')));
 ViteExpress.listen(app, 3000, () => console.log("Server is listening..."));
